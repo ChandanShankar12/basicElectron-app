@@ -1,0 +1,40 @@
+[user]
+    name = Chandan Shankar
+    email = chandan.shankar98@gmail.com
+
+[core]
+    editor = code
+    autocrlf = input
+    safecrlf = true
+    excludesfile = ~/.gitignore_global
+
+[init]
+    defaultBranch = main
+
+[color]
+    ui = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    diff = auto
+
+[push]
+    default = current
+
+[pull]
+    rebase = false
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[help]
+    autocorrect = 20
+
+[credential]
+    helper = cache --timeout=3600 
