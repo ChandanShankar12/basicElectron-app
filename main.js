@@ -1,3 +1,4 @@
+const { protocol } = require('electron')
 const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('path')
 
@@ -6,24 +7,19 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('client/public/index.html')
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
   ipcMain.handle('ping', () => 'pong')
   createWindow()
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
-    }
-  })
 })
 
 app.on('window-all-closed', () => {
